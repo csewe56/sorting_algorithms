@@ -21,34 +21,24 @@ void swap(int *num1, int *num2)
  *
  * Return: position of pivot
  */
-int partition(int *array, int low, int high, size_t size)
+size_t partition(int *array, int low, int high, size_t size);
 {
-	/* select the rightmost element as pivot */
 	int pivot = array[high];
-	/* pointer for greater element */
 	int ptr = low;
 	int j;
-	/*
-	 *traverse across each element in array and
-	 *compare them with pivot
-	 */
+
 	for (j = low; j < high; j++)
 	{
 		if (array[j] <= pivot)
 		{
 			if (ptr != j)
 			{
-				/*
-				 * if element smaller than pivot is found
-				 *swap it with the greater element pointed by i
-				 */
 				swap(&array[ptr], &array[j]);
 				print_array(array, size);
 			}
 			ptr++;
 		}
 	}
-	/* swap the pivot element with the greater element at i */
 	if (ptr != high)
 	{
 		swap(&array[ptr], &array[high]);
